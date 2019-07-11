@@ -7,6 +7,7 @@ static NSString *const CHANNEL_NAME = @"expandable_flutter_webview";
     BOOL _enableAppScheme;
     BOOL _enableZoom;
     NSArray *_cookieList;
+    NSString *_cookieString;
 }
 @end
 
@@ -86,7 +87,9 @@ static NSString *const CHANNEL_NAME = @"expandable_flutter_webview";
     NSNumber *scrollBar = call.arguments[@"scrollBar"];
     NSString *url = call.arguments[@"url"];
     NSArray *cookies = call.arguments[@"cookieList"];
+    NSString *cookieString = call.arguments[@"cookies"];
     _cookieList = cookies;
+    _cookieString = cookieString;
 
     if (clearCache != (id)[NSNull null] && [clearCache boolValue]) {
         [[NSURLCache sharedURLCache] removeAllCachedResponses];
