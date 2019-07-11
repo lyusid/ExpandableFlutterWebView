@@ -1,23 +1,23 @@
-#import "FlutterWebviewPlugin.h"
+#import "ExpandableFlutterWebviewPlugin.h"
 
 static NSString *const CHANNEL_NAME = @"expandable_flutter_webview";
 
 // UIWebViewDelegate
-@interface FlutterWebviewPlugin() <WKNavigationDelegate, UIScrollViewDelegate> {
+@interface ExpandableFlutterWebviewPlugin() <WKNavigationDelegate, UIScrollViewDelegate> {
     BOOL _enableAppScheme;
     BOOL _enableZoom;
     NSArray *_cookieList;
 }
 @end
 
-@implementation FlutterWebviewPlugin
+@implementation ExpandableFlutterWebviewPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
     channel = [FlutterMethodChannel
                methodChannelWithName:CHANNEL_NAME
                binaryMessenger:[registrar messenger]];
 
     UIViewController *viewController = [UIApplication sharedApplication].delegate.window.rootViewController;
-    FlutterWebviewPlugin* instance = [[FlutterWebviewPlugin alloc] initWithViewController:viewController];
+    ExpandableFlutterWebviewPlugin* instance = [[ExpandableFlutterWebviewPlugin alloc] initWithViewController:viewController];
 
     [registrar addMethodCallDelegate:instance channel:channel];
 }
